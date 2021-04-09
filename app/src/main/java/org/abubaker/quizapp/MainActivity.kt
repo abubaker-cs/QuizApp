@@ -2,6 +2,8 @@ package org.abubaker.quizapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import org.abubaker.quizapp.databinding.ActivityMainBinding
 
@@ -17,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        // Disable statusbar
+        // window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        // window.setDecorFitsSystemWindows(false)
 
 
     }

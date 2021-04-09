@@ -67,9 +67,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Name"
-                        android:textColor="#363A43" />
+                        android:textColor="#363A43"
+                        android:textColorHint="#7A8089" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/purple_500"
+                    android:text="Start"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
