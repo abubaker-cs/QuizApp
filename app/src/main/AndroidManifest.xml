@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
 
+        <activity
+            android:name=".QuizQuestionsActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
         <!--
             windowSoftInputMode:
             How the main window of the activity interacts with the window containing the on-screen soft keyboard.
@@ -19,7 +24,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
