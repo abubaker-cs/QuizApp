@@ -4,4 +4,8 @@
     <string name="guessFlag">Flag</string>
     <string name="mainQuestion">What country does this flag belongs to?</string>
     <string name="btnSubmit">SUBMIT</string>
+    <string name="username">Please enter your name</string>
+    <string name="greetings">Welcome</string>
+    <string name="btnStart">Start</string>
+    <string name="labelHint">Name</string>
 </resources>

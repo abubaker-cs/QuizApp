@@ -1,10 +1,8 @@
 package org.abubaker.quizapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import org.abubaker.quizapp.data.Constants
 import org.abubaker.quizapp.databinding.ActivityMainBinding
 
 class QuizQuestionsActivity : AppCompatActivity() {
@@ -19,8 +17,8 @@ class QuizQuestionsActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_questions)
 
         // It will return all questions
-        val questionsList = Constants.getQuestions()
-        Log.i("Questions Size: ", "${questionsList.size}")
+        // val questionsList = Constants.getQuestions()
+        // Log.i("Questions Size: ", "${questionsList.size}")
     }
 
 }
