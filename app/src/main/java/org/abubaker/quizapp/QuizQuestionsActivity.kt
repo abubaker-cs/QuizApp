@@ -14,6 +14,9 @@ import org.abubaker.quizapp.data.Question
 import org.abubaker.quizapp.databinding.ActivityMainBinding
 import org.abubaker.quizapp.databinding.ActivityQuizQuestionsBinding
 
+/**
+ * Applied OnClickedListener to the class
+ */
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     // Binding Object
@@ -41,6 +44,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         setQuestion()
 
+        /**
+         * Method 01 - We set the view and implemented the code directly
+         */
         binding.tvOptionOne.setOnClickListener(this)
         binding.tvOptionTwo.setOnClickListener(this)
         binding.tvOptionThree.setOnClickListener(this)
@@ -71,8 +77,32 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    /**
+     * It will apply styles for the clicked option (button) based on index-position
+     */
     override fun onClick(v: View?) {
+        when (v?.id) {
 
+            /**
+             * Method 02
+             */
+
+            R.id.tv_option_one -> {
+                selectedOptionView(binding.tvOptionOne, 1)
+            }
+
+            R.id.tv_option_two -> {
+                selectedOptionView(binding.tvOptionTwo, 2)
+            }
+
+            R.id.tv_option_three -> {
+                selectedOptionView(binding.tvOptionThree, 3)
+            }
+
+            R.id.tv_option_four -> {
+                selectedOptionView(binding.tvOptionFour, 4)
+            }
+        }
     }
 
     /*
@@ -98,9 +128,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
             option.background =
                 ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
 
-
         }
-
 
     }
 
@@ -124,7 +152,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         // Border Color
         tv.background =
             ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
-
 
     }
 
