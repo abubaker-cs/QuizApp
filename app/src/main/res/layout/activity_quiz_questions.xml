@@ -24,31 +24,19 @@
             <!-- Main Question -->
             <TextView
                 android:id="@+id/tv_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="@string/mainQuestion"
-                android:textColor="@color/textColor"
-                android:textSize="22sp" />
+                style="@style/tv_question"
+                android:text="@string/mainQuestion" />
 
             <!-- Flag Image -->
             <ImageView
                 android:id="@+id/iv_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/guessFlag"
+                style="@style/iv_image"
                 android:src="@drawable/ic_flag_of_argentina" />
 
             <!-- It will contain list of options -->
             <LinearLayout
                 android:id="@+id/ll_progress_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/ll_progress_details">
 
                 <!-- Progress Bar
                      With layout_weight we have to use layout_width = 0
@@ -67,12 +55,7 @@
                 <!-- Progress Counter: 0/10 -->
                 <TextView
                     android:id="@+id/tv_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="14sp"
+                    style="@style/tv_progress"
                     tools:text="0/10" />
 
             </LinearLayout>
@@ -104,14 +87,8 @@
             <!-- Submit Button -->
             <Button
                 android:id="@+id/btn_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/btnSubmit"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                style="@style/btn_submit"
+                android:text="@string/btnSubmit" />
 
         </LinearLayout>
 
