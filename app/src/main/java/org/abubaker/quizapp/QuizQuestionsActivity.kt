@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -13,7 +14,7 @@ import org.abubaker.quizapp.data.Question
 import org.abubaker.quizapp.databinding.ActivityMainBinding
 import org.abubaker.quizapp.databinding.ActivityQuizQuestionsBinding
 
-class QuizQuestionsActivity : AppCompatActivity() {
+class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     // Binding Object
     private lateinit var binding: ActivityQuizQuestionsBinding
@@ -36,9 +37,14 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
         // It will return all questions
         val questionsList = Constants.getQuestions()
-        Log.i("Questions Size: ", "${questionsList.size}")
+        // Log.i("Questions Size: ", "${questionsList.size}")
 
         setQuestion()
+
+        binding.tvOptionOne.setOnClickListener(this)
+        binding.tvOptionTwo.setOnClickListener(this)
+        binding.tvOptionThree.setOnClickListener(this)
+        binding.tvOptionFour.setOnClickListener(this)
 
     }
 
@@ -47,7 +53,8 @@ class QuizQuestionsActivity : AppCompatActivity() {
         mCurrentPosition = 1
         val question = mQuestionsList!!.get(mCurrentPosition - 1)
 
-        //
+        // Issue: Buttons for options should be reset on each time when we will create a new question
+        // It will reset all buttons back to the default
         defaultOptionsView()
 
         binding.progressBar.progress = mCurrentPosition
@@ -64,7 +71,13 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
     }
 
-    //
+    override fun onClick(v: View?) {
+
+    }
+
+    /*
+     * defaultOptionsView()
+     */
     private fun defaultOptionsView() {
         val options = ArrayList<TextView>()
         options.add(0, binding.tvOptionOne)
@@ -83,10 +96,34 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
             // Border Color
             option.background =
-                ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
+                ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
 
 
         }
+
+
+    }
+
+    /**
+     * selectedOptionView()
+     */
+    private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {
+
+        // Reset to default view
+        defaultOptionsView()
+
+        // Set to new position
+        mSelectedOptionPosition = selectedOptionNumber
+
+        // Text Color: 363A43
+        tv.setTextColor(Color.parseColor("363A43"))
+
+        // Typeface: Bold
+        tv.setTypeface(tv.typeface, Typeface.BOLD)
+
+        // Border Color
+        tv.background =
+            ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
 
 
     }
