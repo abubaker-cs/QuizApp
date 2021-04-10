@@ -1,4 +1,6 @@
-package org.abubaker.quizapp
+package org.abubaker.quizapp.data
+
+import org.abubaker.quizapp.R
 
 object Constants {
 

@@ -1,4 +1,4 @@
-package org.abubaker.quizapp
+package org.abubaker.quizapp.data
 
 // data class = it will nave not functions
 data class Question(

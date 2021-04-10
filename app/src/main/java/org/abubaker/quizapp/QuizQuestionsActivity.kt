@@ -3,8 +3,8 @@ package org.abubaker.quizapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import org.abubaker.quizapp.data.Constants
 import org.abubaker.quizapp.databinding.ActivityMainBinding
 
 class QuizQuestionsActivity : AppCompatActivity() {

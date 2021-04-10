@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        // Disable statusbar
+        // Disable status bar
         // window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         // window.setDecorFitsSystemWindows(false)
 
