@@ -5,6 +5,10 @@ object Constants {
     fun getQuestions(): ArrayList<Question> {
         val questionsList = ArrayList<Question>()
 
+        /**
+         * Prepare data for all questions and add them to the questionList
+         */
+
         // 1 - Argentina
         val que1 = Question(
             1, "What country does this flag belong to?",
@@ -74,7 +78,6 @@ object Constants {
             "none of these",
             1
         )
-
         questionsList.add(que6)
 
         // 7 - Denmark
@@ -87,7 +90,6 @@ object Constants {
             "Ethiopia",
             3
         )
-
         questionsList.add(que7)
 
         // 8 - India
@@ -126,6 +128,7 @@ object Constants {
         )
         questionsList.add(que10)
 
+        // Return the complete list of questions
         return questionsList
     }
 
