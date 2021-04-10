@@ -3,4 +3,5 @@
     <string name="appName">QuizApp</string>
     <string name="guessFlag">Flag</string>
     <string name="mainQuestion">What country does this flag belongs to?</string>
+    <string name="btnSubmit">SUBMIT</string>
 </resources>
