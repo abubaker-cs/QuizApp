@@ -7,6 +7,7 @@
         Useful for small screens:
         android:fillViewport="true"
      -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -79,62 +80,25 @@
             <!-- Option 1 -->
             <TextView
                 android:id="@+id/tv_option_one"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/default_option_border_bg"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="#7A8089"
-                android:textSize="18sp"
+                style="@style/tv_options"
                 tools:text="Apple" />
 
             <!-- Option 2 -->
             <TextView
                 android:id="@+id/tv_option_two"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/default_option_border_bg"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="#7A8089"
-                android:textSize="18sp"
+                style="@style/tv_options"
                 tools:text="Google" />
 
             <!-- Option 3 -->
             <TextView
                 android:id="@+id/tv_option_three"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/default_option_border_bg"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="#7A8089"
-                android:textSize="18sp"
+                style="@style/tv_options"
                 tools:text="Android Inc." />
 
             <!-- Option 4 -->
             <TextView
                 android:id="@+id/tv_option_four"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/default_option_border_bg"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="#7A8089"
-                android:textSize="18sp"
+                style="@style/tv_options"
                 tools:text="Nokia" />
 
             <!-- Submit Button -->
