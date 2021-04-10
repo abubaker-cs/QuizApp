@@ -47,6 +47,9 @@ class QuizQuestionsActivity : AppCompatActivity() {
         mCurrentPosition = 1
         val question = mQuestionsList!!.get(mCurrentPosition - 1)
 
+        //
+        defaultOptionsView()
+
         binding.progressBar.progress = mCurrentPosition
 
         binding.tvProgress.text = "$mCurrentPosition / ${binding.progressBar.max}"
