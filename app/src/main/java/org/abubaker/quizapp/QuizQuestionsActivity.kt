@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import org.abubaker.quizapp.databinding.ActivityMainBinding
+import org.abubaker.quizapp.databinding.ActivityQuizQuestionsBinding
 
 class QuizQuestionsActivity : AppCompatActivity() {
 
     // Binding Object
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityQuizQuestionsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
