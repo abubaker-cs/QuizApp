@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -49,6 +50,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvOptionTwo.setOnClickListener(this)
         binding.tvOptionThree.setOnClickListener(this)
         binding.tvOptionFour.setOnClickListener(this)
+
+        // Submit Button
+        binding.btnSubmit.setOnClickListener(this)
+
 
     }
 
@@ -109,6 +114,44 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tv_option_four -> {
                 selectedOptionView(binding.tvOptionFour, 4)
             }
+
+            R.id.btn_submit -> {
+                if (mSelectedOptionPosition == 0) {
+
+                    // We are increasing the position by 1 to move to the next Question
+                    mCurrentPosition++
+
+                    when {
+                        //
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+
+                            setQuestion()
+
+                        }
+                        else -> {
+                            // For final results
+                            Toast.makeText(
+                                this,
+                                "You have successfully completed the quiz",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
+                } else {
+                    //
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+
+                    // Wrong answer should be displayed in Red color
+                    if (question!!.correctAnswer != mSelectedOptionPosition) {
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }
+
+                    // Correct answer must be always in Green Color
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                }
+            }
         }
     }
 
@@ -136,6 +179,33 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
         }
 
+    }
+
+    /**
+     * Correct Answer
+     *
+     * drawables are internally stored as integers, thus we are using drawableView: Int
+     */
+    private fun answerView(answer: Int, drawableView: Int) {
+        when (answer) {
+
+            1 -> {
+                binding.tvOptionOne.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            2 -> {
+                binding.tvOptionTwo.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            3 -> {
+                binding.tvOptionThree.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            4 -> {
+                binding.tvOptionFour.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+        }
     }
 
     /**
