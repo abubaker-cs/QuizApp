@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import org.abubaker.quizapp.data.Constants
 import org.abubaker.quizapp.data.Question
-import org.abubaker.quizapp.databinding.ActivityMainBinding
 import org.abubaker.quizapp.databinding.ActivityQuizQuestionsBinding
 
 /**
@@ -68,7 +67,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         // Issue: Buttons for options should be reset on each time when we will create a new question
         // It will reset all buttons back to the default
-        // defaultOptionsView()
+        defaultOptionsView()
 
         binding.progressBar.progress = mCurrentPosition
 //
@@ -88,6 +87,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
      * It will apply styles for the clicked option (button) based on index-position
      */
     override fun onClick(v: View?) {
+
         when (v?.id) {
 
             /**
@@ -126,7 +126,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         for (option in options) {
 
             // Text Color
-            option.setTextColor(Color.parseColor("7A8089"))
+            option.setTextColor(Color.parseColor("#7A8089"))
 
             // Typeface
             option.typeface = Typeface.DEFAULT
@@ -134,7 +134,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
             // Border Color
             option.background =
                 ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
-
         }
 
     }
@@ -151,7 +150,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         mSelectedOptionPosition = selectedOptionNumber
 
         // Text Color: 363A43
-        tv.setTextColor(Color.parseColor("363A43"))
+        tv.setTextColor(Color.parseColor("#363A43"))
 
         // Typeface: Bold
         tv.setTypeface(tv.typeface, Typeface.BOLD)
