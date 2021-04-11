@@ -19,9 +19,6 @@ import org.abubaker.quizapp.databinding.ActivityQuizQuestionsBinding
  */
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
-    // Binding Object
-    private lateinit var binding: ActivityQuizQuestionsBinding
-
     // Current Question
     private var mCurrentPosition: Int = 1
 
@@ -31,6 +28,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     // Selected answer from the 4 options.
     private var mSelectedOptionPosition: Int = 0
 
+    // Binding Object
+    private lateinit var binding: ActivityQuizQuestionsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +38,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_questions)
 
         // It will return all questions
-        val questionsList = Constants.getQuestions()
-        // Log.i("Questions Size: ", "${questionsList.size}")
+        mQuestionsList = Constants.getQuestions()
+        Log.i("Questions Size: ", "${mQuestionsList!!.size}")
 
         setQuestion()
 
@@ -57,14 +56,22 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private fun setQuestion() {
 
         mCurrentPosition = 1
-        val question = mQuestionsList!!.get(mCurrentPosition - 1)
+        val question = mQuestionsList?.get(mCurrentPosition - 1)
+        // val question = mQuestionsList!!.get(mCurrentPosition - 1)
+
+        Log.i("setQuestions not null", "$question")
+        Log.i("Questions Size: ", "${mQuestionsList!!.size}")
+
+        if (question == null) {
+            println("I am empty")
+        }
 
         // Issue: Buttons for options should be reset on each time when we will create a new question
         // It will reset all buttons back to the default
-        defaultOptionsView()
+        // defaultOptionsView()
 
         binding.progressBar.progress = mCurrentPosition
-
+//
         binding.tvProgress.text = "$mCurrentPosition / ${binding.progressBar.max}"
         binding.tvQuestion.text = question!!.question
 
