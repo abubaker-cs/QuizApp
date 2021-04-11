@@ -59,7 +59,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setQuestion() {
 
-        mCurrentPosition = 1
+        // mCurrentPosition = 1
+
         val question = mQuestionsList?.get(mCurrentPosition - 1)
         // val question = mQuestionsList!!.get(mCurrentPosition - 1)
 
@@ -73,6 +74,16 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         // Issue: Buttons for options should be reset on each time when we will create a new question
         // It will reset all buttons back to the default
         defaultOptionsView()
+
+        /**
+         * It will reset button's label back to SUBMIT so the user can submit answer of the next question
+         * else, on the last question the user will be allowed to FINISH the quiz
+         */
+        if (mCurrentPosition == mQuestionsList!!.size) {
+            binding.btnSubmit.text = "FINISH"
+        } else {
+            binding.btnSubmit.text = "SUBMIT"
+        }
 
         binding.progressBar.progress = mCurrentPosition
 //
@@ -149,6 +160,15 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
                     // Correct answer must be always in Green Color
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if (mCurrentPosition == mQuestionsList!!.size) {
+                        binding.btnSubmit.text = "FINISH"
+                    } else {
+                        binding.btnSubmit.text = "GO TO NEXT QUESTION"
+                    }
+
+                    // Reset position
+                    mSelectedOptionPosition = 0
 
                 }
             }
