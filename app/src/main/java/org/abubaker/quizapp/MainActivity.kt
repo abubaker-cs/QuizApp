@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import org.abubaker.quizapp.data.Constants
 import org.abubaker.quizapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,10 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
+
+                // Send extra info to the QuizQuestionsActivity through using intent.putExtra()
+                intent.putExtra(Constants.USER_NAME, binding.etName.text.toString())
+
                 startActivity(intent)
                 finish() // Close the main / active activity
             }

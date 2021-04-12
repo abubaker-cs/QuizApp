@@ -1,5 +1,6 @@
 package org.abubaker.quizapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -31,6 +32,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     // Stores total correct answers
     private var mCorrectAnswers: Int = 0
 
+    // Username
+    private var mUserName: String? = null
+
     // Binding Object
     private lateinit var binding: ActivityQuizQuestionsBinding
 
@@ -39,6 +43,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         // setContentView(R.layout.activity_quiz_questions)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_questions)
+
+        // Receive data from the intent sent by MainActivity
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         // It will return all questions
         mQuestionsList = Constants.getQuestions()
@@ -143,12 +150,25 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
                         }
                         else -> {
-                            // For final results
-                            Toast.makeText(
-                                this,
-                                "You have successfully completed the quiz",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            /**
+                             * For final results
+                             */
+                            val intent = Intent(this, ResultActivity::class.java)
+
+                            // We are sending mUserName (created in the onCreate()) and sending back
+                            // to the ResultActivity for displaying final results
+                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+
+                            // Start Activity with our provided info
+                            startActivity(intent)
+
+                            // Toast.makeText(
+                            //     this,
+                            //     "You have successfully completed the quiz",
+                            //     Toast.LENGTH_SHORT
+                            // ).show()
                         }
                     }
 
