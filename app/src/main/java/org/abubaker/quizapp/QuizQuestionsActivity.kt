@@ -28,6 +28,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     // Selected answer from the 4 options.
     private var mSelectedOptionPosition: Int = 0
 
+    // Stores total correct answers
+    private var mCorrectAnswers: Int = 0
+
     // Binding Object
     private lateinit var binding: ActivityQuizQuestionsBinding
 

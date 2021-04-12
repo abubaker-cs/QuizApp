@@ -8,4 +8,10 @@
     <string name="greetings">Welcome</string>
     <string name="btnStart">Start</string>
     <string name="labelHint">Name</string>
+    <string name="tv_result">Result</string>
+    <string name="iv_image">image</string>
+    <string name="tv_congratulations">Hey, Congratulations!</string>
+    <string name="tv_name">Username</string>
+    <string name="tv_score">Your Score is 9 out of 10</string>
+    <string name="btn_finish">FINISH</string>
 </resources>
