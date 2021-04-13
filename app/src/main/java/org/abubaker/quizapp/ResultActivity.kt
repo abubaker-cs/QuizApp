@@ -21,9 +21,9 @@ class ResultActivity : AppCompatActivity() {
         /**
          * Catch Information
          */
-        val username = intent.getStringArrayExtra(Constants.USER_NAME)
-        println("Username: $username")
-        binding.tvName.text = username.toString()
+        val userName = intent.getStringExtra(Constants.USER_NAME)
+        println("Username: $userName")
+        binding.tvName.text = userName
 
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
         val correctAnswer = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
