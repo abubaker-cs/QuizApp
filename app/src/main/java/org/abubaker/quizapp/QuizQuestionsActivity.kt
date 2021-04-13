@@ -42,7 +42,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         // setContentView(R.layout.activity_quiz_questions)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_quiz_questions)
+        binding = DataBindingUtil.setContentView(this@QuizQuestionsActivity, R.layout.activity_quiz_questions)
 
         // Receive data from the intent sent by MainActivity
         mUserName = intent.getStringExtra(Constants.USER_NAME)
@@ -71,15 +71,15 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         // mCurrentPosition = 1
 
-        val question = mQuestionsList?.get(mCurrentPosition - 1)
+        val question = mQuestionsList!!.get(mCurrentPosition - 1)
         // val question = mQuestionsList!!.get(mCurrentPosition - 1)
 
         Log.i("setQuestions not null", "$question")
         Log.i("Questions Size: ", "${mQuestionsList!!.size}")
 
-        if (question == null) {
-            println("I am empty")
-        }
+        // if (question == null) {
+        //     println("I am empty")
+        // }
 
         // Issue: Buttons for options should be reset on each time when we will create a new question
         // It will reset all buttons back to the default
@@ -97,8 +97,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.progressBar.progress = mCurrentPosition
 //
-        binding.tvProgress.text = "$mCurrentPosition / ${binding.progressBar.max}"
-        binding.tvQuestion.text = question!!.question
+        binding.tvProgress.text = "$mCurrentPosition / ${binding.progressBar.getMax()}"
+        binding.tvQuestion.text = question.question
 
         binding.ivImage.setImageResource(question.image)
 
@@ -147,13 +147,16 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         mCurrentPosition <= mQuestionsList!!.size -> {
 
                             setQuestion()
-
                         }
                         else -> {
                             /**
                              * For final results
                              */
-                            val intent = Intent(this, ResultActivity::class.java)
+                            val intent = Intent(this@QuizQuestionsActivity, ResultActivity::class.java)
+
+                            println("Username: $mUserName")
+                            println("Correct Answers: $mCorrectAnswers")
+                            println("Total Questions: ${mQuestionsList!!.size}")
 
                             // We are sending mUserName (created in the onCreate()) and sending back
                             // to the ResultActivity for displaying final results
@@ -163,6 +166,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
                             // Start Activity with our provided info
                             startActivity(intent)
+                            finish()
 
                             // Toast.makeText(
                             //     this,
@@ -179,6 +183,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     // Wrong answer should be displayed in Red color
                     if (question!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    } else {
+                        mCorrectAnswers++
                     }
 
                     // Correct answer must be always in Green Color
@@ -219,7 +225,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
             // Border Color
             option.background =
-                ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
+                ContextCompat.getDrawable(this@QuizQuestionsActivity, R.drawable.default_option_border_bg)
         }
 
     }
@@ -233,19 +239,19 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         when (answer) {
 
             1 -> {
-                binding.tvOptionOne.background = ContextCompat.getDrawable(this, drawableView)
+                binding.tvOptionOne.background = ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
             }
 
             2 -> {
-                binding.tvOptionTwo.background = ContextCompat.getDrawable(this, drawableView)
+                binding.tvOptionTwo.background = ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
             }
 
             3 -> {
-                binding.tvOptionThree.background = ContextCompat.getDrawable(this, drawableView)
+                binding.tvOptionThree.background = ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
             }
 
             4 -> {
-                binding.tvOptionFour.background = ContextCompat.getDrawable(this, drawableView)
+                binding.tvOptionFour.background = ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
             }
 
         }
@@ -270,7 +276,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         // Border Color
         tv.background =
-            ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
+            ContextCompat.getDrawable(this@QuizQuestionsActivity, R.drawable.selected_option_border_bg)
 
     }
 

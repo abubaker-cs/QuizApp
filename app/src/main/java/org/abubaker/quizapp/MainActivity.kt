@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         // It will load activity_main.xml view
         // setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
 
         // Disable status bar
         // window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnStart.setOnClickListener {
 
             if (binding.etName.text.toString().isEmpty()) {
-                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Please enter your name", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this, QuizQuestionsActivity::class.java)
+                val intent = Intent(this@MainActivity, QuizQuestionsActivity::class.java)
 
                 // Send extra info to the QuizQuestionsActivity through using intent.putExtra()
                 intent.putExtra(Constants.USER_NAME, binding.etName.text.toString())

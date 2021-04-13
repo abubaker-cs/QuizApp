@@ -22,16 +22,18 @@ class ResultActivity : AppCompatActivity() {
          * Catch Information
          */
         val username = intent.getStringArrayExtra(Constants.USER_NAME)
+        println("Username: $username")
         binding.tvName.text = username.toString()
 
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
         val correctAnswer = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
 
+        println("Your Score is $correctAnswer out of $totalQuestions")
         binding.tvScore.text = "Your Score is $correctAnswer out of $totalQuestions"
 
         binding.btnFinish.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            startActivity(Intent(this@ResultActivity, MainActivity::class.java))
+            // finish()
         }
 
     }
